@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe "arrays to objects" do
 
-  [:name].each do |property|
+  [:name, :street].each do |property|
     describe "with an array with one symbol named #{property.to_s}" do
       describe "and no data" do
         before do
