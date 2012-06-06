@@ -1,21 +1,21 @@
 class Array
-  def to_objects(&blk)
-    data = blk.call
-    return [] if data.empty?
 
-    results = []
-    data.each do |value|
-      result = Object.new
-      self.each_with_index do |property_name, index|
-        this_value = get_the_value(value, index)
-        add_reader_for(result, property_name, this_value)
-      end
-      results << result
-    end
-    results
+  def to_objects(&blk)
+    records = blk.call
+    return [] if records.empty?
+    records.map{ |record| create_object_for_this_record(record) }
   end
 
   private
+
+  def create_object_for_this_record(record)
+    result = Object.new
+    self.each_with_index do |property_name, index|
+      value = get_the_value(record, index)
+      add_reader_for(result, property_name, value)
+    end
+    result
+  end
 
   def get_the_value(value, index)
     return value unless value.kind_of?(Array)
