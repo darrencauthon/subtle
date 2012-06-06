@@ -29,6 +29,24 @@ describe "arrays to objects" do
           end
         end
       end
+
+      describe "and two records with John and Howard" do
+        before do
+          @values = [property].to_objects {["John", "Howard"]}
+        end
+
+        it "should return two records" do
+          @values.count.must_equal 2
+        end
+
+        it "should set the first to John" do
+          @values[0].send(property).must_equal "John" 
+        end
+
+        it "should set the second to Howard" do
+          @values[1].send(property).must_equal "Howard"
+        end
+      end
     end
   end
   
