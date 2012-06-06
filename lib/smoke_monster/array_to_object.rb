@@ -3,15 +3,20 @@ class Array
     data = blk.call
     return [] if data.empty?
 
-    data.map do |value|
+    results = []
+    data.each do |value|
       result = Object.new
-      property_name = self[0]
-      result.instance_variable_set("@#{property_name}", value)
-      result.instance_eval("
-      class << self
-        attr_accessor :#{property_name}
-      end")
-      result
+      self.each_with_index do |property_name, index|
+        this_value = value
+        this_value = value[index] if value.kind_of?(Array)
+        result.instance_variable_set("@#{property_name}", this_value)
+        result.instance_eval("
+        class << self
+          attr_accessor :#{property_name}
+        end")
+      end
+      results << result
     end
+    results
   end
 end

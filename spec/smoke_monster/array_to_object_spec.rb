@@ -48,6 +48,26 @@ describe "arrays to objects" do
         end
       end
     end
+
+    describe "with an array with two symbols named first_name and last_name" do
+      describe "with 'Ellis' and 'Wyatt'" do
+        before do
+          @values = [:first_name, :last_name].to_objects { [['Ellis', 'Wyatt']] }
+        end
+
+        it "should return one record" do
+          @values.count.must_equal 1
+        end
+
+        it "should set the first name to Ellis" do
+          @values[0].first_name.must_equal 'Ellis'
+        end
+
+        it "should set the last name to Wyatt" do
+          @values[0].last_name.must_equal 'Wyatt'
+        end
+      end
+    end
   end
   
 end
