@@ -67,6 +67,32 @@ describe "arrays to objects" do
           @values[0].last_name.must_equal 'Wyatt'
         end
       end
+
+      describe "with 'Ellis' and 'Wyatt', then 'Dagny' and 'Taggart'" do
+        before do
+          @values = [:first_name, :last_name].to_objects { [['Ellis', 'Wyatt'], ['Dagny', 'Taggart']] }
+        end
+
+        it "should return one record" do
+          @values.count.must_equal 2
+        end
+
+        it "should set the first name to Ellis on the first record" do
+          @values[0].first_name.must_equal 'Ellis'
+        end
+
+        it "should set the last name to Wyatt on the first record" do
+          @values[0].last_name.must_equal 'Wyatt'
+        end
+
+        it "should set the first name to Dagny on the second record" do
+          @values[1].first_name.must_equal 'Dagny'
+        end
+
+        it "should set the last name to Wyatt on the second record" do
+          @values[1].last_name.must_equal 'Taggart'
+        end
+      end
     end
   end
   
