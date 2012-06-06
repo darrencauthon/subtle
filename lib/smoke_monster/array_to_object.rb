@@ -4,13 +4,12 @@ class Array
     return [] if data.empty?
     
     result = Object.new
-    def result.name
-      @name
-    end
-    def result.name=(value)
-      @name = value
-    end
-    result.name = data[0]
+    property_name = self[0]
+    result.instance_variable_set("@#{property_name}", data[0])
+    result.instance_eval("
+    class << self
+      attr_accessor :#{property_name}
+    end")
     [result]
   end
 end
