@@ -4,9 +4,9 @@ require File.expand_path('../lib/smoke_monster/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Darren Cauthon"]
   gem.email         = ["darren@cauthon.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Unexplained, dark magic.}
+  gem.summary       = %q{Unexplained, dark magic.}
+  gem.homepage      = "http://www.github.com/darrencauthon/smoke_monster"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
