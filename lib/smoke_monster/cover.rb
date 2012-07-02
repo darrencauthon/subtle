@@ -1,5 +1,5 @@
 module SmokeMonster
-  class ViewModel
+  class Cover
     def initialize(subject)
       @subject = subject
     end
@@ -7,7 +7,7 @@ module SmokeMonster
     def method_missing(meth, *args, &blk)
       @subject.send(meth, *args, &blk)
     rescue
-      SmokeMonster::ViewModel.new nil
+      SmokeMonster::Cover.new nil
     end
   end
 end

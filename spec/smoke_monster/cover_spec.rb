@@ -1,12 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe SmokeMonster::ViewModel do
+describe SmokeMonster::Cover do
   before do
   end
 
   describe "when given an Object" do
     before do
-      @view_model = SmokeMonster::ViewModel.new Object.new
+      @view_model = SmokeMonster::Cover.new Object.new
     end
 
     it "should not throw an exception on methods that do not exist" do
@@ -15,8 +15,8 @@ describe SmokeMonster::ViewModel do
     end
 
     it "should return a view model if the method does not exist" do
-      @view_model.should_be_a_view_model.must_be_instance_of SmokeMonster::ViewModel
-      @view_model.another_test.must_be_instance_of SmokeMonster::ViewModel
+      @view_model.should_be_a_view_model.must_be_instance_of SmokeMonster::Cover
+      @view_model.another_test.must_be_instance_of SmokeMonster::Cover
     end
 
     it "should return new view models each time on methods that do not exist" do
@@ -36,7 +36,7 @@ describe SmokeMonster::ViewModel do
 
     before do
       @person = Person.new
-      @view_model = SmokeMonster::ViewModel.new @person
+      @view_model = SmokeMonster::Cover.new @person
     end
 
     [["John", "Galt"], ["Howard", "Roark"]].each do |name|
@@ -69,7 +69,7 @@ describe SmokeMonster::ViewModel do
 
     before do
       @thing = Thing.new
-      @view_model = SmokeMonster::ViewModel.new @thing
+      @view_model = SmokeMonster::Cover.new @thing
     end
 
     it "should call the block" do
