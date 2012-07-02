@@ -9,5 +9,9 @@ module SmokeMonster
     rescue
       SmokeMonster::Cover.new nil
     end
+
+    def the_original_subject
+      @subject
+    end
   end
 end

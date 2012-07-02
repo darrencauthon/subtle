@@ -79,4 +79,16 @@ describe SmokeMonster::Cover do
       Thing.test_value.must_equal true
     end
   end
+
+  [1, "abc", Object.new].each do |subject|
+    describe "#the_original_subject" do
+      before do
+        @cover = SmokeMonster::Cover.new subject
+      end
+
+      it "should return the original" do
+        @cover.the_original_subject.must_equal subject
+      end
+    end
+  end
 end
