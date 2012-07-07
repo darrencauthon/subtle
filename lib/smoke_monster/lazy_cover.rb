@@ -14,8 +14,7 @@ module SmokeMonster
 
     alias :old_method_missing :method_missing
     def method_missing(meth, *args, &blk)
-      return nil unless @can_allow_method_missing_to_work_now
-      @subject = @block.call
+      @subject = @block.call if @subject.nil?
       old_method_missing meth, *args, &blk
     end
 

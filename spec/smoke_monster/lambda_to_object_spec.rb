@@ -6,9 +6,6 @@ describe "lambda to object" do
     before do
       @value = -> { nil }.to_object
     end
-    it "should return a LazyCover object" do
-      @value.class.must_equal SmokeMonster::LazyCover
-    end
 
     it "should remember the original value is nil" do
       @value.the_original_subject.must_equal nil 
@@ -18,9 +15,6 @@ describe "lambda to object" do
   describe "to_object on a lambda that returns an integer" do
     before do
       @value = -> { 1 }.to_object
-    end
-    it "should return a LazyCover object" do
-      @value.class.must_equal SmokeMonster::LazyCover
     end
 
     it "should remember the original value is 1" do

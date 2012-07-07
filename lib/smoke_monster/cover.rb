@@ -1,5 +1,8 @@
+require 'blankslate'
+
 module SmokeMonster
-  class Cover
+
+  module CoverMethods
     def initialize(subject)
       @subject = subject
     end
@@ -7,11 +10,15 @@ module SmokeMonster
     def method_missing(meth, *args, &blk)
       @subject.send(meth, *args, &blk)
     rescue
-      SmokeMonster::Cover.new nil
+      SmokeMonster::Cover.new Object.new
     end
 
     def the_original_subject
       @subject
     end
+  end
+
+  class Cover < ::BlankSlate
+    include SmokeMonster::CoverMethods
   end
 end

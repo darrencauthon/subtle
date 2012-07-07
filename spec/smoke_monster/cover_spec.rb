@@ -14,9 +14,9 @@ describe SmokeMonster::Cover do
       @view_model.or_this_either
     end
 
-    it "should return a view model if the method does not exist" do
-      @view_model.should_be_a_view_model.must_be_instance_of SmokeMonster::Cover
-      @view_model.another_test.must_be_instance_of SmokeMonster::Cover
+    it "should return an object if the method does not exist" do
+      @view_model.should_be_a_view_model.wont_be_nil
+      @view_model.another_test.wont_be_nil
     end
 
     it "should return new view models each time on methods that do not exist" do
