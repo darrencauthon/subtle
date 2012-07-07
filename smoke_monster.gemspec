@@ -16,6 +16,6 @@ Gem::Specification.new do |gem|
   gem.version       = SmokeMonster::VERSION
 
   # specify any dependencies here; for example:
-  s.add_runtime_dependency 'blankslate'
-  s.add_development_dependency 'mocha'
+  gem.add_runtime_dependency 'blankslate'
+  gem.add_development_dependency 'mocha'
 end
