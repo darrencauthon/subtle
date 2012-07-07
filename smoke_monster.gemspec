@@ -14,4 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = "smoke_monster"
   gem.require_paths = ["lib"]
   gem.version       = SmokeMonster::VERSION
+
+  # specify any dependencies here; for example:
+  s.add_runtime_dependency 'blankslate'
+  s.add_development_dependency 'mocha'
 end
