@@ -18,4 +18,5 @@ Gem::Specification.new do |gem|
   # specify any dependencies here; for example:
   gem.add_runtime_dependency 'blankslate'
   gem.add_development_dependency 'mocha'
+  gem.add_development_dependency 'rake'
 end
