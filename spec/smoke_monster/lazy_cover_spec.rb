@@ -33,16 +33,14 @@ describe SmokeMonster::LazyCover do
   it "should return the same exceptions passed from its base class methods" do
 
     object = Object.new
-    def object.defined_method
-      "yes"
-    end
+    object.stubs(:defined_method).returns("yes")
 
     lazy = SmokeMonster::LazyCover.new(-> { object })
     lazy.defined_method.must_equal "yes"
     was_called = false
     begin
       lazy.not_a_defined_method
-    rescue
+    rescue NoMethodError
       was_called = true
     end
     was_called.must_equal true
