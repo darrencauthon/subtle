@@ -1,7 +1,6 @@
 require 'blankslate'
 
 module SmokeMonster
-
   module CoverMethods
     def initialize(subject)
       @subject = subject
@@ -15,6 +14,12 @@ module SmokeMonster
 
     def the_original_subject
       @subject
+    end
+  end
+
+  module StrictCoverMethods
+    def method_missing(meth, *args, &blk)
+      @subject.send(meth, *args, &blk)
     end
   end
 

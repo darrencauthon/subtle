@@ -1,5 +1,7 @@
 module SmokeMonster
   class LazyCover < Cover
+    include SmokeMonster::StrictCoverMethods
+
     def initialize(block)
       @block = block
     end

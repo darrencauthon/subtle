@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'blankslate'
+gem 'mocha'
 
 
 gem 'minitest'

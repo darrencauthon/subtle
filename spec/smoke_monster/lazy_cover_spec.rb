@@ -1,3 +1,4 @@
+require 'mocha'
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 class LazyCoverTest
@@ -27,6 +28,24 @@ describe SmokeMonster::LazyCover do
     LazyCoverTest.was_called.must_equal 1
     lazy.to_s
     LazyCoverTest.was_called.must_equal 1
+  end
+
+  it "should return the same exceptions passed from its base class methods" do
+
+    object = Object.new
+    def object.defined_method
+      "yes"
+    end
+
+    lazy = SmokeMonster::LazyCover.new(-> { object })
+    lazy.defined_method.must_equal "yes"
+    was_called = false
+    begin
+      lazy.not_a_defined_method
+    rescue
+      was_called = true
+    end
+    was_called.must_equal true
   end
 
   describe "the original subject" do
