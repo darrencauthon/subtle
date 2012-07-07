@@ -6,7 +6,7 @@ module SmokeMonster
 
     alias :the_original_subject_from_the_base_class :the_original_subject
     def the_original_subject
-      @subject = @block.call
+      @subject = @block.call if @subject.nil?
       the_original_subject_from_the_base_class
     end
 
