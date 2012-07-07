@@ -3,7 +3,7 @@ class Array
   def to_objects(&blk)
     records = blk.call
     return [] if records.empty?
-    records.map{ |record| create_object_for_this_record(record) }
+    records.map { |record| create_object_for_this_record(record) }
   end
 
   private
