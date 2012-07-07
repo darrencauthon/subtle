@@ -4,10 +4,10 @@ module SmokeMonster
       @block = block
     end
 
-    alias :old_the_original_subject :the_original_subject
+    alias :the_original_subject_from_the_base_class :the_original_subject
     def the_original_subject
       @subject = @block.call
-      old_the_original_subject
+      the_original_subject_from_the_base_class
     end
 
     private
