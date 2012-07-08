@@ -1,5 +1,20 @@
 # SmokeMonster
 
+## Installation
+Add this line to your application's Gemfile:
+
+    gem 'smoke_monster'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    gem install smoke_monster
+
+## Usage
+
 ### Arrays to Objects
 
 This feature exists to make the creation of sets of objects with data easily.
