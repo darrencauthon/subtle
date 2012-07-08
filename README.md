@@ -2,7 +2,7 @@
 
 ### Arrays to Objects
 
-The purpose of this feature is to make the creation of a set of objects with data easy.
+This feature exists to make the creation of sets of objects with data easily.
 
 * Create an array of symbols of symbols that match the properties on the objects you want, and
 * Pass a block that returns an array of arrays with matching data. 
@@ -24,3 +24,20 @@ records[1].last_name   # "Roark"
 records[2].first_name  # "Dagny"
 records[2].last_name   # "Taggart"
 ````
+
+### Safety Proc
+
+This feature was written because I hate wrapping code in begin/rescue/end blocks.  If I have a line of code and I don't particularly care if it fails, I have to wrap it in three more lines of care to stop exceptions.
+
+To me, this is most useful in imports or other code where I might want to check to run a small block of code that 
+
+````ruby
+person.name = document.at_xpath('./h1').text
+
+# if this call fails then we will move on
+-> { person.bio = document.xpath('./div[@class="bio_info"]//span') }.call_safely
+
+# if this call fails then the second block will be called
+-> { person.special = document.xpath('./div[@class="active"]//a')[1].text == "special" }.call_safely { person.special = false }
+````
+
