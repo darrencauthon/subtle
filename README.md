@@ -60,3 +60,45 @@ end
 person = Person.new(first_name: "John", last_name: "Galt")
 ````
 
+### Proc to Object
+
+I was inspired to write this feature while dealing with some bad Rails code. A programmer wrote a before_filter on ApplicationController that made a big, expensive web service call to pass the users current weather information to the view.  This weather information was shown in various places on the site, but there were many pages on the site where the data was not being used at all.
+
+A thought came to me... *would it be possible to create an object that does the work to instantiate itself, but only when it is referenced?*
+
+Well, this doesn't quite do that, but it's close.  It lets you turn this:
+
+````ruby
+  before_filter do
+    service = BigExpensiveWeatherService.new
+    # we just paid the price right now
+    @weather_results = service.an_expensive_web_call
+  end
+````
+
+into this:
+
+````ruby
+  before_filter do
+    # we haven't paid the price for this call
+    @weather_results = -> do
+      service = BigExpensiveWeatherService.new
+      service.an_expensive_web_call
+    end.to_object
+  end
+````
+
+With both, you could do this:
+
+````haml
+  %span
+    = @weather_results.temperature
+````
+
+But with the latter, the call to execute the big web service won't be made until .temperature is called.
+
+I know, I know... there are lots of reasons **NOT** to do this, and I'm not saying to do this all the time, but it's neat to know that it is possible.
+
+
+
+
