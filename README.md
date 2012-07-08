@@ -4,7 +4,7 @@ Ever see the "smoke monster" in Lost?  You'll know it's around when you hear ver
 
 When I tried to think of what I wanted to call this gem in my head, that's what came to me.  This gem is a collection of a few small methods that I've wanted to inject into the primitive objects offered by the base Ruby library.  It will look like Ruby (maybe to the point where it's hard to distinguish), you won't see *it* in that it's all hidden away in the objects, but anybody who notices these methods might know that there's something a little strange going on.
 
-I don't like "grab-bag" method libraries any more than anybody, but these are pretty helpful to me.
+I don't like "grab-bag" method libraries any more than anybody, but also like everybody:  I'll make an exception for **MINE**. :)
 
 ## Installation
 Add this line to your application's Gemfile:
