@@ -1,5 +1,11 @@
 # SmokeMonster
 
+Ever see the "smoke monster" in Lost?  You'll know it's around when you hear very strange things like quiet whispers of people talking backwards, dead people coming back to talk, strange puffs of smoke appearing out of nowhere, threatening roars from deep in the jungle, etc etc.  In later seasons it was explained, but in early seasons of the show it was one of the most mysterious things I had ever seen on tv.
+
+When I tried to think of what I wanted to call this gem in my head, that's what came to me.  This gem is a collection of a few small methods that I've wanted to inject into the primitive objects offered by the base Ruby library.  It will look like Ruby (maybe to the point where it's hard to distinguish), you won't see *it* in that it's all hidden away in the objects, but anybody who notices these methods might know that there's something a little strange going on.
+
+I don't like "grab-bag" method libraries any more than anybody, but these are pretty helpful to me.
+
 ## Installation
 Add this line to your application's Gemfile:
 
