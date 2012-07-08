@@ -57,6 +57,6 @@ class Person
   attr_accessor :first_name, :last_name
 end
 
-person = Person.new { first_name: "John", last_name: "Galt" }
+person = Person.new(first_name: "John", last_name: "Galt")
 ````
 
