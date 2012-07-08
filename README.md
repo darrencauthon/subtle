@@ -41,3 +41,22 @@ person.name = document.at_xpath('./h1').text
 -> { person.special = document.xpath('./div[@class="active"]//a')[1].text == "special" }.call_safely { person.special = false }
 ````
 
+### Param Constructor
+
+One thing I liked about C# was the ability to instantiate my objects like this:
+
+````c#
+var person = new Person() { FirstName = "John", LastName = "Galt" };
+````
+
+This syntax is not built into Ruby syntax today, but it does exist in Rails models.  So I took that idea from Rails and wrote an implementation that works like this:
+
+````ruby
+class Person
+  params_constructor
+  attr_accessor :first_name, :last_name
+end
+
+person = Person.new { first_name: "John", last_name: "Galt" }
+````
+
