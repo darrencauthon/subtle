@@ -11,7 +11,7 @@ This feature exists to make the creation of sets of objects with data easily.
 records = [:first_name, :last_name].to_objects { 
   [
     ["John", "Galt"], 
-    ["Howard", "Roark"]
+    ["Howard", "Roark"],
     ["Dagny", "Taggart"]
   ]}
 
