@@ -1,5 +1,5 @@
 class Proc
   def to_object
-    SmokeMonster::LazyCover.new self
+    Subtle::LazyCover.new self
   end
 end

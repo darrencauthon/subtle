@@ -6,7 +6,7 @@ guard 'minitest' do
 
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})         { |m| "spec/lib/#{m[1]}_spec.rb" }
-  watch(%r{^lib/smoke_monster/(.+)\.rb$})         { |m| "spec/smoke_monster/#{m[1]}_spec.rb" }
+  watch(%r{^lib/subtle/(.+)\.rb$})         { |m| "spec/subtle/#{m[1]}_spec.rb" }
   watch(%r{^spec/models/.+\.rb$})   { ["spec/models", "spec/acceptance"] }
   watch('spec/spec_helper.rb')      { "spec" }
 end

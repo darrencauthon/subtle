@@ -1,6 +1,6 @@
-module SmokeMonster
+module Subtle
   class LazyCover < Cover
-    include SmokeMonster::StrictCoverMethods
+    include Subtle::StrictCoverMethods
 
     def initialize(block)
       @block = block

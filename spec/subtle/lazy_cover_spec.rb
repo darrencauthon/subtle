@@ -6,15 +6,16 @@ class LazyCoverTest
     attr_accessor :was_called
   end
 end
-describe SmokeMonster::LazyCover do
+
+describe Subtle::LazyCover do
 
   it "should not call the block passed to it" do
-    lazy = SmokeMonster::LazyCover.new(-> { raise 'was called' })
+    lazy = Subtle::LazyCover.new(-> { raise 'was called' })
   end
 
   it "should call the block passed to it when things are references" do
     LazyCoverTest.was_called = false
-    lazy = SmokeMonster::LazyCover.new(-> { LazyCoverTest.was_called = true })
+    lazy = Subtle::LazyCover.new(-> { LazyCoverTest.was_called = true })
     LazyCoverTest.was_called.must_equal false
     lazy.to_s
     LazyCoverTest.was_called.must_equal true
@@ -22,7 +23,7 @@ describe SmokeMonster::LazyCover do
 
   it "should call the block passed to it only once" do
     LazyCoverTest.was_called = 0
-    lazy = SmokeMonster::LazyCover.new(-> { LazyCoverTest.was_called = LazyCoverTest.was_called + 1 })
+    lazy = Subtle::LazyCover.new(-> { LazyCoverTest.was_called = LazyCoverTest.was_called + 1 })
     LazyCoverTest.was_called.must_equal 0
     lazy.to_s
     LazyCoverTest.was_called.must_equal 1
@@ -35,7 +36,7 @@ describe SmokeMonster::LazyCover do
     object = Object.new
     object.stubs(:defined_method).returns("yes")
 
-    lazy = SmokeMonster::LazyCover.new(-> { object })
+    lazy = Subtle::LazyCover.new(-> { object })
     lazy.defined_method.must_equal "yes"
     was_called = false
     begin
@@ -48,13 +49,13 @@ describe SmokeMonster::LazyCover do
 
   describe "the original subject" do
     it "should call the block passed to it" do
-      SmokeMonster::LazyCover.new(-> { 0 }).the_original_subject.must_equal 0
-      SmokeMonster::LazyCover.new(-> { "x" }).the_original_subject.must_equal "x"
+      Subtle::LazyCover.new(-> { 0 }).the_original_subject.must_equal 0
+      Subtle::LazyCover.new(-> { "x" }).the_original_subject.must_equal "x"
     end
 
     it "should only call the block passed to it once" do
       LazyCoverTest.was_called = 0
-      lazy = SmokeMonster::LazyCover.new(-> { LazyCoverTest.was_called += 1 })
+      lazy = Subtle::LazyCover.new(-> { LazyCoverTest.was_called += 1 })
       lazy.the_original_subject
       LazyCoverTest.was_called.must_equal 1
       lazy.the_original_subject

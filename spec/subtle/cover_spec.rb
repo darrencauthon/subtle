@@ -1,12 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe SmokeMonster::Cover do
+describe Subtle::Cover do
   before do
   end
 
   describe "when given an Object" do
     before do
-      @view_model = SmokeMonster::Cover.new Object.new
+      @view_model = Subtle::Cover.new Object.new
     end
 
     it "should not throw an exception on methods that do not exist" do
@@ -36,7 +36,7 @@ describe SmokeMonster::Cover do
 
     before do
       @person = Person.new
-      @view_model = SmokeMonster::Cover.new @person
+      @view_model = Subtle::Cover.new @person
     end
 
     [["John", "Galt"], ["Howard", "Roark"]].each do |name|
@@ -69,7 +69,7 @@ describe SmokeMonster::Cover do
 
     before do
       @thing = Thing.new
-      @view_model = SmokeMonster::Cover.new @thing
+      @view_model = Subtle::Cover.new @thing
     end
 
     it "should call the block" do
@@ -83,7 +83,7 @@ describe SmokeMonster::Cover do
   [1, "abc", Object.new].each do |subject|
     describe "#the_original_subject" do
       before do
-        @cover = SmokeMonster::Cover.new subject
+        @cover = Subtle::Cover.new subject
       end
 
       it "should return the original" do

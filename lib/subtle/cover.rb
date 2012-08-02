@@ -1,6 +1,6 @@
 require 'blankslate'
 
-module SmokeMonster
+module Subtle
   module CoverMethods
     def initialize(subject)
       @subject = subject
@@ -9,7 +9,7 @@ module SmokeMonster
     def method_missing(meth, *args, &blk)
       @subject.send(meth, *args, &blk)
     rescue
-      SmokeMonster::Cover.new Object.new
+      Subtle::Cover.new Object.new
     end
 
     def the_original_subject
@@ -24,6 +24,6 @@ module SmokeMonster
   end
 
   class Cover < ::BlankSlate
-    include SmokeMonster::CoverMethods
+    include Subtle::CoverMethods
   end
 end
