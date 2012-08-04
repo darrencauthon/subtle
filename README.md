@@ -59,6 +59,16 @@ person.last_name = "Galt"
 person.last_name # Will be Galt
 ````
 
+You can also pass an optional subject to to_object, and the properties will be added to that method.
+````ruby
+subject = ClassWithNoName.new
+person = [:name].to_object subject
+
+person.name = "John Galt"
+person.name # Will be John Galt
+````
+
+
 ### Safety Proc
 
 This feature was written because I hate wrapping code in begin/rescue/end blocks.  If I have a line of code and I don't particularly care if it fails, I have to wrap it in three more lines of care to stop exceptions.
