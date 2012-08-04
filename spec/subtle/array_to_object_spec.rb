@@ -37,5 +37,23 @@ describe "array to object" do
       @result.respond_to?(:last_name=).must_equal true
     end
   end
+
+  describe "passing an object as a parameter" do
+    before do
+      @object = Object.new
+      @result = [:first_name, :last_name].to_object(@object)
+    end
+
+    it "should return the same object passed to it" do
+      @result.must_be_same_as @object
+    end
+
+    it "should add the properties in the array" do
+      @result.respond_to?(:first_name).must_equal true
+      @result.respond_to?(:first_name=).must_equal true
+      @result.respond_to?(:last_name).must_equal true
+      @result.respond_to?(:last_name=).must_equal true
+    end
+  end
   
 end

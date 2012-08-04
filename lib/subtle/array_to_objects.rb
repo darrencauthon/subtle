@@ -1,9 +1,9 @@
 class Array
 
-  def to_object
-    object = Object.new
-    self.each { |item| add_reader_for(object, item, nil) }
-    object
+  def to_object(subject = nil)
+    subject = Object.new if subject.nil?
+    self.each { |item| add_reader_for(subject, item, nil) }
+    subject
   end
 
   def to_objects(&blk)
