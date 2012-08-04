@@ -23,7 +23,7 @@ Or install it yourself as:
 
 This feature exists to make the creation of sets of objects with data easily.
 
-* Create an array of symbols of symbols that match the properties on the objects you want, and
+* Create an array of symbols that match the properties on the objects you want, and
 * Pass a block that returns an array of arrays with matching data. 
 
 ````ruby
