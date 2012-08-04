@@ -44,6 +44,21 @@ records[2].first_name  # "Dagny"
 records[2].last_name   # "Taggart"
 ````
 
+### Array to Object
+
+This feature exists to make the creation of an object with assignable properties easy.
+
+* Create an array of symbols that match the properties you want on the object.
+
+````ruby
+person = [:first_name, :last_name].to_object
+
+person.first_name = "John"
+person.first_name # Will be John
+person.last_name = "Galt"
+person.last_name # Will be Galt
+````
+
 ### Safety Proc
 
 This feature was written because I hate wrapping code in begin/rescue/end blocks.  If I have a line of code and I don't particularly care if it fails, I have to wrap it in three more lines of care to stop exceptions.
