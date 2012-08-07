@@ -15,6 +15,15 @@ class ThirdParamConstructorTest
   attr_accessor :first_name, :last_name
 end
 
+class FourthParamConstructorTest
+  param_constructor do |p|
+    p.middle_name = 'm'
+    p.first_name = 'f'
+    p.last_name = 'l'
+  end
+  attr_accessor :first_name, :last_name, :middle_name
+end
+
 describe "param_constructor" do
   describe 'just the constructor itself' do
     it "should let the object be instantiated with a hash" do
@@ -43,6 +52,18 @@ describe "param_constructor" do
     it "should let the object be instantiated with a hash" do
       test = ThirdParamConstructorTest.new(first_name: "Dagny", last_name: "Roark")
       test.first_name.must_equal 'expected value'
+    end
+  end
+
+  describe 'pass a block with the constructor AND to the constructor' do
+    it "should run both and let the last one win" do
+      test = FourthParamConstructorTest.new(first_name: "", last_name: "") do |o|
+        o.last_name = "second"
+        o.first_name = "first"
+      end
+      test.first_name.must_equal 'first'
+      test.last_name.must_equal 'second'
+      test.middle_name.must_equal 'm'
     end
   end
 end
