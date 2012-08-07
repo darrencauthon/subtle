@@ -1,11 +1,6 @@
 class Object
   def param_constructor(&block_for_each)
     self.class_eval('
-                    def instance_specific_constructor_method(&block)
-                      block.call
-                    end
-                    ')
-    self.class_eval('
     def initialize(params={}, &block)
       params.each do |attr, value|
         self.public_send("#{attr}=", value)
