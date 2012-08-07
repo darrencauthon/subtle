@@ -104,7 +104,23 @@ end
 person = Person.new(first_name: "John", last_name: "Galt")
 ````
 
-You can also pass a block to the constructor when it is instantiated, like so:
+You can also pass a block to the constructor when it is instantiated, like this:
+
+````ruby
+class Person
+  params_constructor do
+    self.first_name = 'Howard'
+  end
+  attr_accessor :first_name, :last_name
+end
+
+person = Person.new(first_name: 'Dagny', last_name: 'Roark')
+
+person.first_name #= Howard
+
+````
+
+or like this:
 
 ````ruby
 class Person
