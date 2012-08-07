@@ -1,8 +1,6 @@
 # Subtle
 
-
-
-I don't like "grab-bag" method libraries any more than anybody, but also like everybody:  I'll make an exception for **MINE**. :)
+This library contains methods that seem to cut down a litle bit of the code that I write daily.
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -67,8 +65,6 @@ person = [:name].to_object subject
 person.name = "John Galt"
 person.name # Will be John Galt
 ````
-
-
 ### Safety Proc
 
 This feature was written because I hate wrapping code in begin/rescue/end blocks.  If I have a line of code and I don't particularly care if it fails, I have to wrap it in three more lines of care to stop exceptions.
@@ -109,7 +105,7 @@ You can also pass a block to the constructor when it is instantiated, like this:
 ````ruby
 class Person
   params_constructor do
-    self.first_name = 'Howard'
+    @first_name = 'Howard'
   end
   attr_accessor :first_name, :last_name
 end
