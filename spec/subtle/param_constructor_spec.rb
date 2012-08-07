@@ -6,14 +6,16 @@ class ParamConstructorTest
 end
 
 describe "param_constructor" do
-  it "should let the object be instantiated with a hash" do
-    test = ParamConstructorTest.new(first_name: "John", last_name: "Galt")
-    test.first_name.must_equal "John"
-    test.last_name.must_equal "Galt"
-  end
+  describe 'just the constructor itself' do
+    it "should let the object be instantiated with a hash" do
+      test = ParamConstructorTest.new(first_name: "John", last_name: "Galt")
+      test.first_name.must_equal "John"
+      test.last_name.must_equal "Galt"
+    end
 
-  it "should allow the object to be instantiated with no params" do
-    test = ParamConstructorTest.new
-    # should not throw an error
+    it "should allow the object to be instantiated with no params" do
+      test = ParamConstructorTest.new
+      # should not throw an error
+    end
   end
 end
