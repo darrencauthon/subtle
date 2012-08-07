@@ -11,15 +11,15 @@ class SecondParamConstructorTest
 end
 
 class ThirdParamConstructorTest
-  param_constructor { |p| p.first_name = "expected value" }
+  param_constructor { self.first_name = "expected value" }
   attr_accessor :first_name, :last_name
 end
 
 class FourthParamConstructorTest
-  param_constructor do |p|
-    p.middle_name = 'm'
-    p.first_name = 'f'
-    p.last_name = 'l'
+  param_constructor do
+    self.middle_name = 'm'
+    self.first_name = 'f'
+    self.last_name = 'l'
   end
   attr_accessor :first_name, :last_name, :middle_name
 end
