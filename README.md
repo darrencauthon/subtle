@@ -104,6 +104,22 @@ end
 person = Person.new(first_name: "John", last_name: "Galt")
 ````
 
+You can also pass a block to the constructor when it is instantiated, like so:
+
+````ruby
+class Person
+  params_constructor
+  attr_accessor :first_name, :last_name
+end
+
+person = Person.new(first_name: 'Dagny', last_name: 'Roark') do |p|
+  p.first_name = 'Howard'
+end
+
+person.first_name #= Howard
+
+````
+
 ### Proc to Object
 
 I was inspired to write this feature while dealing with some bad Rails code. A programmer wrote a before_filter on ApplicationController that made a big, expensive web service call to pass the users current weather information to the view.  This weather information was shown in various places on the site, but there were many pages on the site where the data was not being used at all.
