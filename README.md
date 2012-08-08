@@ -132,7 +132,7 @@ person.first_name #= Howard
 
 ````
 
-### Proc to Object
+### Lambda to Object
 
 I was inspired to write this feature while dealing with some bad Rails code. A programmer wrote a before_filter on ApplicationController that made a big, expensive web service call to pass the users current weather information to the view.  This weather information was shown in various places on the site, but there were many pages on the site where the data was not being used at all.
 
