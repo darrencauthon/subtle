@@ -4,7 +4,7 @@ describe "lambda to object" do
 
   describe "to_object on a lambda that returns nil" do
     before do
-      @value = -> { nil }.to_object
+      @value = lambda { nil }.to_object
     end
 
     it "should remember the original value is nil" do
@@ -14,7 +14,7 @@ describe "lambda to object" do
 
   describe "to_object on a lambda that returns an integer" do
     before do
-      @value = -> { 1 }.to_object
+      @value = lambda { 1 }.to_object
     end
 
     it "should remember the original value is 1" do
@@ -29,7 +29,7 @@ describe "lambda to object" do
   describe "to_object on a lambda, but never accessing the variable" do
     before do
       @was_called = false
-      @value = -> { raise 'it was called' }.to_object
+      @value = lambda { raise 'it was called' }.to_object
     end
 
     it "should not be called" do

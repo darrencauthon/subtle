@@ -10,7 +10,7 @@ describe "Safety Proc" do
   describe "a proc that will throw an exception" do
     before do
       SafetyProc.called = false
-      @proc = -> do 
+      @proc = lambda do 
         SafetyProc.called = true
         raise 'k'
       end
@@ -28,7 +28,7 @@ describe "Safety Proc" do
     end
 
     it "call the block" do
-      @proc = -> { raise 'k' }.call_safely { SafetyProc.called = true }
+      @proc = lambda { raise 'k' }.call_safely { SafetyProc.called = true }
       SafetyProc.called.must_equal true
     end
   end
