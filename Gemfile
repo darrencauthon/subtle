@@ -5,7 +5,6 @@ gemspec
 gem 'blankslate'
 gem 'mocha'
 
-
 gem 'minitest'
 group :development do
   gem 'guard'
