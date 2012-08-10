@@ -3,7 +3,7 @@ class Object
     self.class_eval('
     def initialize(params={}, &block)
       params.each do |attr, value|
-        self.public_send("#{attr}=", value)
+        self.send("#{attr}=", value)
       end if params
       unless block.nil?
         block.call(self)
