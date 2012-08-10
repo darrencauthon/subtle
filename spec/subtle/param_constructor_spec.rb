@@ -40,7 +40,7 @@ describe "param_constructor" do
 
   describe 'pass a block to the constructor' do
     it "should let the object be instantiated with a hash" do
-      test = SecondParamConstructorTest.new(first_name: "Dagny", last_name: "Roark") do |o|
+      test = SecondParamConstructorTest.new(:first_name => "Dagny", :last_name => "Roark") do |o|
         o.first_name = 'Howard'
       end
       test.first_name.must_equal 'Howard'
@@ -50,7 +50,7 @@ describe "param_constructor" do
 
   describe 'pass a block with the constructor' do
     it "should let the object be instantiated with a hash" do
-      test = ThirdParamConstructorTest.new(first_name: "Dagny", last_name: "Roark")
+      test = ThirdParamConstructorTest.new(:first_name => "Dagny", :last_name => "Roark")
       test.first_name.must_equal 'expected value'
     end
   end
