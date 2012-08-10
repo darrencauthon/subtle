@@ -27,7 +27,7 @@ end
 describe "param_constructor" do
   describe 'just the constructor itself' do
     it "should let the object be instantiated with a hash" do
-      test = ParamConstructorTest.new(first_name: "John", last_name: "Galt")
+      test = ParamConstructorTest.new(:first_name => "John", :last_name => "Galt")
       test.first_name.must_equal "John"
       test.last_name.must_equal "Galt"
     end
@@ -57,7 +57,7 @@ describe "param_constructor" do
 
   describe 'pass a block with the constructor AND to the constructor' do
     it "should run both and let the last one win" do
-      test = FourthParamConstructorTest.new(first_name: "", last_name: "") do |o|
+      test = FourthParamConstructorTest.new(:first_name => "", :last_name => "") do |o|
         o.last_name = "second"
         o.first_name = "first"
       end
