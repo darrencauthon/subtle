@@ -6,19 +6,23 @@ class Array
     subject
   end
 
-  def to_objects(&blk)
+  def to_objects(type = Object, &blk)
     records = blk.call
     return [] if records.empty?
-    records.map { |record| create_object_for_this_record(record) }
+    records.map { |record| create_object_for_this_record(type, record) }
   end
 
   private
 
-  def create_object_for_this_record(record)
-    result = Object.new
+  def create_object_for_this_record(type, record)
+    result = type.new
     self.each_with_index do |property_name, index|
       value = get_the_value(record, index)
-      add_reader_for(result, property_name, value)
+      if type == Object
+        add_reader_for(result, property_name, value)
+      else
+        result.send("#{property_name}=".to_sym, value)
+      end
     end
     result
   end
