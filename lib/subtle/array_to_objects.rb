@@ -6,15 +6,15 @@ class Array
     subject
   end
 
-  def to_objects(type = Object, &blk)
-    records = blk.call
+  def to_objects(type = Object, &block_that_returns_the_records)
+    records = block_that_returns_the_records.call
     return [] if records.empty?
-    records.map { |record| create_object_for_this_record(type, record) }
+    records.map { |record| turn_this_data_into_a_filled_object(type, record) }
   end
 
   private
 
-  def create_object_for_this_record(type, record)
+  def turn_this_data_into_a_filled_object(type, record)
     result = create_the_object(type)
     fill_the_object_with_the_values(result, record)
     result
@@ -43,8 +43,8 @@ class Array
 
   def add_attr_accessor_for(result, property_name)
     result.instance_eval("
-    class << self
-      attr_accessor :#{property_name}
-    end")
+      class << self
+        attr_accessor :#{property_name}
+      end")
   end
 end
