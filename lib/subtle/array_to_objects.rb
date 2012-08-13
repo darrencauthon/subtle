@@ -15,15 +15,19 @@ class Array
   private
 
   def create_object_for_this_record(type, record)
-    result = instantiate_the_object(type)
+    result = create_the_object(type)
+    fill_the_object_with_the_values(result, record)
+    result
+  end
+
+  def fill_the_object_with_the_values(result, record)
     self.each_with_index do |property_name, index|
       value = get_the_value(record, index)
       result.send("#{property_name}=".to_sym, value)
     end
-    result
   end
 
-  def instantiate_the_object(type)
+  def create_the_object(type)
     result = type.new
     return result if type != Object
     self.each_with_index do |property_name, index|
