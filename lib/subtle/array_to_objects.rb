@@ -2,7 +2,7 @@ class Array
 
   def to_object(subject = nil)
     subject = Object.new if subject.nil?
-    self.each { |item| add_reader_for(subject, item, nil) }
+    self.each { |item| add_attr_accessor_for(subject, item) }
     subject
   end
 
@@ -19,10 +19,9 @@ class Array
     self.each_with_index do |property_name, index|
       value = get_the_value(record, index)
       if type == Object
-        add_reader_for(result, property_name, value)
-      else
-        result.send("#{property_name}=".to_sym, value)
+        add_attr_accessor_for(result, property_name)
       end
+      result.send("#{property_name}=".to_sym, value)
     end
     result
   end
@@ -32,8 +31,7 @@ class Array
     value[index]
   end
 
-  def add_reader_for(result, property_name, this_value)
-    result.instance_variable_set("@#{property_name}", this_value)
+  def add_attr_accessor_for(result, property_name)
     result.instance_eval("
     class << self
       attr_accessor :#{property_name}
