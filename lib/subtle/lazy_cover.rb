@@ -2,8 +2,8 @@ module Subtle
   class LazyCover < Cover
     include Subtle::StrictCoverMethods
 
-    def initialize(block)
-      @block = block
+    def initialize(block_that_creates_the_object)
+      @block = block_that_creates_the_object
     end
 
     alias :the_original_subject_from_the_base_class :the_original_subject
