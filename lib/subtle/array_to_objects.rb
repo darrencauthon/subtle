@@ -1,8 +1,7 @@
 class Array
 
-  def to_object(subject = nil)
-    subject = Object.new if subject.nil?
-    self.each { |item| add_attr_accessor_for(subject, item) }
+  def to_object(subject = Object.new)
+    self.each { |field| add_attr_accessor_for(subject, field) }
     subject
   end
 
@@ -21,17 +20,17 @@ class Array
   end
 
   def fill_the_object_with_the_values(result, record)
-    self.each_with_index do |property_name, index|
+    self.each_with_index do |field, index|
       value = get_the_value(record, index)
-      result.send("#{property_name}=".to_sym, value)
+      result.send("#{field}=".to_sym, value)
     end
   end
 
   def create_the_object(type)
     result = type.new
     return result if type != Object
-    self.each_with_index do |property_name, index|
-      add_attr_accessor_for(result, property_name)
+    self.each_with_index do |field, index|
+      add_attr_accessor_for(result, field)
     end
     result
   end
