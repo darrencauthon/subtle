@@ -2,19 +2,6 @@
 
 This library contains methods that seem to cut down a litle bit of the code that I write daily.
 
-## Installation
-Add this line to your application's Gemfile:
-
-    gem 'subtle'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    gem install subtle
-
 ## Usage
 
 ### Arrays to Objects
