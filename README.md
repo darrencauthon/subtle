@@ -31,6 +31,28 @@ records[2].first_name  # "Dagny"
 records[2].last_name   # "Taggart"
 ````
 
+### Arrays to Hashes
+
+This feature exists to create a set of hashes with the same properties, but to only defined the keys once.
+
+````ruby
+records = [:first_name, :last_name].to_hashes {
+  [
+    ["John",   "Galt"   ],
+    ["Howard", "Roark"  ],
+    ["Dagny",  "Taggart"]
+  ]}
+
+records[0][:first_name]  # "John"
+records[0][:last_name]   # "Galt"
+
+records[1][:first_name]  # "Howard"
+records[1][:last_name]   # "Roark"
+
+records[2][:first_name]  # "Dagny"
+records[2][:last_name]   # "Taggart"
+````
+
 ### Array to Object
 
 This feature exists to make the creation of an object with assignable properties easy.
