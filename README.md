@@ -1,6 +1,6 @@
 # Subtle [![Build Status](https://secure.travis-ci.org/darrencauthon/subtle.png?branch=master)](http://travis-ci.org/darrencauthon/subtle)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/darrencauthon/subtle)
-
+[![Coverage Status](https://coveralls.io/repos/darrencauthon/subtle/badge.png?branch=master)](https://coveralls.io/r/darrencauthon/subtle)
 
 This library contains methods that seem to cut down a litle bit of the code that I write daily.
 
