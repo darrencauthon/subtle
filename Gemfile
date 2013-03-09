@@ -10,5 +10,5 @@ group :development do
   gem 'guard'
   gem 'guard-minitest', :git => 'git://github.com/aspiers/guard-minitest.git'
   gem 'ruby_gntp'
-  gem 'coveralls', require: false
+  gem 'coveralls'
 end
