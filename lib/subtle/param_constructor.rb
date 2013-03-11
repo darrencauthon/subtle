@@ -15,4 +15,5 @@ class Object
       self.send(:define_method, :constructor_method, &block_for_each)
     end
   end
+  alias :params_constructor :param_constructor
 end
