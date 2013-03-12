@@ -180,8 +180,6 @@ With both, you could do this:
 
 But with the latter, the call to execute the big web service won't be made until .temperature is called.  Future calls to methods on @weather_results will use the same object passed from the Proc.
 
-I know, I know... there are lots of reasons **NOT** to do this, and I'm not saying to do this all the time, but it's neat to know that it is possible.
-
 
 
 
