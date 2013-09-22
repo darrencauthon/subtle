@@ -181,5 +181,20 @@ With both, you could do this:
 But with the latter, the call to execute the big web service won't be made until .temperature is called.  Future calls to methods on @weather_results will use the same object passed from the Proc.
 
 
+### Exception Raised
 
+Exception Raised adds the ability to get the exception thrown by a Proc, but without the begin/rescue syntax.
 
+This method can be helpful in tests by providing a one-line way to get the exception thrown.
+
+````ruby
+  exception = -> { raise 'ok' }.exception_raised
+  exception.is_a? RuntimeError # true
+  exception.message            # 'ok'
+
+  exception = -> { 1/0 }.exception_raised
+  exception.is_a? ZeroDivisionError # true
+
+  exception = -> { 1/1 }.exception_raised
+  exception.nil? # true
+````
