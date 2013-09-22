@@ -14,5 +14,14 @@ describe "exception returning" do
 
     end
 
+    describe "no runtime exception" do
+
+      it "should return a runtime exception" do
+        exception = (->() { message }).exception_raised
+        exception.nil?.must_equal true
+      end
+
+    end
+
   end
 end
