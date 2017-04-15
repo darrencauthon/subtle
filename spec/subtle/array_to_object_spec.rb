@@ -11,6 +11,7 @@ describe "array to object" do
 
         it "should return an object" do
           @result.nil?.must_equal false
+          false.must_equal true
         end
 
         it "should create an attr_accessor for the property" do
